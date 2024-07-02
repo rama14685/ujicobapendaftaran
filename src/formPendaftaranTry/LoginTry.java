@@ -16,17 +16,31 @@ public class LoginTry extends javax.swing.JFrame {
 
     public void Login()
     {
-        try {
-            konekDb rama = new konekDb();
-            Connection con = rama.Buka();
+         try {
+            konekDb rama = new konekDb(); // Pastikan class konekDb sudah ada dan di-import
+            Connection con = rama.Buka(); // Metode Buka() harus mengembalikan Connection
             Statement st = con.createStatement();
 
-            String strsql = "SELECT * FROM user WHERE email ='" + email.getText() + "' and password ='" + pass.getText()+ "'";
+            String strsql = "SELECT * FROM user WHERE email ='" + email.getText() + "' AND password ='" + new String(pass.getPassword()) + "'";
             ResultSet rs = st.executeQuery(strsql);
-        }
-        catch(SQLException e)
-        {
-            JOptionPane.showMessageDialog(null ,e);
+
+            if (rs.next()) {
+                // Jika email dan password benar, buka FormDaftar
+                new FormDaftarTry().setVisible(true); // FormDaftar harus merupakan JFrame atau JDialog
+                this.dispose();
+            } else {
+                // Reset input fields jika login gagal
+                email.setText("");
+                pass.setText("");
+                email.requestFocus();
+                JOptionPane.showMessageDialog(null, "Email atau Password salah!");
+            }
+            
+            rs.close();
+            st.close();
+            con.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Koneksi ke database gagal: " + e.getMessage());
         }
     }
     @SuppressWarnings("unchecked")

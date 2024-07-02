@@ -16,13 +16,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FormDaftarTry extends javax.swing.JFrame {
 
+    private static void setModel(DefaultTableModel data) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /**
      * Creates new form DataAnggotaa
      */
     public FormDaftarTry() {
         initComponents();
         load_data();
-        IDotomatis();
     }
 
     public void load_data(){
@@ -31,7 +34,7 @@ public class FormDaftarTry extends javax.swing.JFrame {
             Connection con = rama.Buka();
             Object header[]={"nodaftar","nama","tanggal","email","no_hp","jalur","prodi"};
             DefaultTableModel data = new DefaultTableModel(null, header);
-            formdaftar.setModel(data);
+            FormDaftarTry.setModel(data);
             String strsql = "SELECT * FROM anggota";
             
             Statement st = con.createStatement();
@@ -68,35 +71,7 @@ public class FormDaftarTry extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null ,e);
         }
     }
-    
-    private void IDotomatis(){
-        try{
-            konekDb rama = new konekDb();
-            Connection con = rama.Buka();            
-            Statement st = con.createStatement();
-            
-            String strsql = "SELECT * FROM anggota ORDER BY id_anggota";
-            ResultSet rs = st.executeQuery(strsql);
-            if(rs.next()){
-                String id_anggota=rs.getString("id_anggota").substring(1);
-                String an = ""+(Integer.parseInt(id_anggota)+1);
-                String Nol = "";
-                if (an.length()==1){
-                    Nol="0000";
-                }else if (an.length()==2){
-                    Nol="000";
-                }else if (an.length()==3){
-                    Nol="00";
-                }
-                nodaftar.setText("U"+Nol+an);
-            } else {
-                nodaftar.setText("U00001");
-            }
-        }
-        catch(SQLException e){
-            JOptionPane.showMessageDialog(null ,e);
-        }
-    }
+   
     
     public void clear(){
         nodaftar.setText("");
@@ -104,7 +79,8 @@ public class FormDaftarTry extends javax.swing.JFrame {
         tgl.setText("");
         email.setText("");
         nohp.setText("");
-        jalur.setSelectedItem("Aktif");
+        jalur.setSelectedItem("");
+        prodi.setSelectedItem("");
     }
     /**
      * This method is called from within the constructor to initialize the form.
