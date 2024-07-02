@@ -34,7 +34,7 @@
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="184" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="236" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
@@ -248,6 +248,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prodiActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -257,7 +260,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="FORMULIR PENDAFTARAN MAHASISWA BARU 2024"/>
+        <Property name="text" type="java.lang.String" value="FORM PENDAFTARAN MAHASISWA BARU 2024"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">

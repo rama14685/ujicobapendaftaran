@@ -14,12 +14,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author HP
  */
-public class FormDaftar extends javax.swing.JFrame {
+public class FormDaftarTry extends javax.swing.JFrame {
 
     /**
      * Creates new form DataAnggotaa
      */
-    public FormDaftar() {
+    public FormDaftarTry() {
         initComponents();
         load_data();
         IDotomatis();
@@ -29,9 +29,9 @@ public class FormDaftar extends javax.swing.JFrame {
         try {
             konekDb rama = new konekDb();
             Connection con = rama.Buka();
-            Object header[]={"id_anggota","nim","nama","email","no_hp","status"};
+            Object header[]={"nodaftar","nama","tanggal","email","no_hp","jalur","prodi"};
             DefaultTableModel data = new DefaultTableModel(null, header);
-            anggota.setModel(data);
+            formdaftar.setModel(data);
             String strsql = "SELECT * FROM anggota";
             
             Statement st = con.createStatement();
@@ -60,7 +60,7 @@ public class FormDaftar extends javax.swing.JFrame {
             Connection con = rama.Buka();            
             Statement st = con.createStatement();
 
-            String strsql = "INSERT INTO anggota VALUES('"+nodaftar.getText()+"','"+nama.getText()+"','"+tgl.getText()+"','"+email.getText()+"','"+nohp.getText()+"','"+jalur.getSelectedItem()+"')";
+            String strsql = "INSERT INTO formdaftar VALUES('"+nodaftar.getText()+"','"+nama.getText()+"','"+tgl.getText()+"','"+email.getText()+"','"+nohp.getText()+"','"+jalur.getSelectedItem()+"','"+prodi.getSelectedItem()+"')";
             st.execute(strsql);
             JOptionPane.showMessageDialog(this , "Data Anggota Berhasil Disimpan");
         }
@@ -183,9 +183,14 @@ public class FormDaftar extends javax.swing.JFrame {
         jLabel8.setText("Pilih Prodi");
 
         prodi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika - S1", "Sistem Informasi - S1", "Ilmu Komunikasi - S1", "Desain Komputer Visual - S1", "Animasi - D4" }));
+        prodi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodiActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel9.setText("FORMULIR PENDAFTARAN MAHASISWA BARU 2024");
+        jLabel9.setText("FORM PENDAFTARAN MAHASISWA BARU 2024");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Universitas Dian Nuswantoro Semarang");
@@ -202,7 +207,7 @@ public class FormDaftar extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(340, 340, 340)
                         .addComponent(jLabel10)))
-                .addGap(0, 184, Short.MAX_VALUE))
+                .addGap(0, 236, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,6 +313,10 @@ public class FormDaftar extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_exitActionPerformed
 
+    private void prodiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prodiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -325,14 +334,22 @@ public class FormDaftar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormDaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDaftarTry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormDaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDaftarTry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormDaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDaftarTry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormDaftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormDaftarTry.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -345,7 +362,7 @@ public class FormDaftar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormDaftar().setVisible(true);
+                new FormDaftarTry().setVisible(true);
             }
         });
     }
